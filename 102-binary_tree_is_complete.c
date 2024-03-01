@@ -7,32 +7,32 @@
  */
 int binary_tree_is_complete(const binary_tree_t *tree)
 {
-	binary_tree_t *array[1024];
-	int i, insert, old_node_has_no_child = 0;
+	binary_tree_t *tab[1024];
+	int i, insert, if_no_child = 0;
 
 	if (!tree)
 		return (0);
 	for (i = 0; i < 1024; i++)
-		array[i] = NULL;
+		tab[i] = NULL;
 	i = 0;
-	array[i] = (binary_tree_t *)tree;
+	tab[i] = (binary_tree_t *)tree;
 	insert = 1;
-	while (array[i])
+	while (tab[i])
 	{
-		if (!array[i]->left && array[i]->right)
+		if (!tab[i]->left && tab[i]->right)
 			return (0);
-		if ((array[i]->right || array[i]->left) && old_node_has_no_child == 1)
+		if ((tab[i]->right || tab[i]->left) && if_no_child == 1)
 			return (0);
-		if (!array[i]->right)
-			old_node_has_no_child = 1;
-		if (array[i]->left)
+		if (!tab[i]->right)
+			if_no_child = 1;
+		if (tab[i]->left)
 		{
-			array[insert] = array[i]->left;
+			tab[insert] = tab[i]->left;
 			insert++;
 		}
-		if (array[i]->right)
+		if (tab[i]->right)
 		{
-			array[insert] = array[i]->right;
+			tab[insert] = tab[i]->right;
 			insert++;
 		}
 		i++;

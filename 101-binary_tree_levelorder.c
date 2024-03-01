@@ -7,27 +7,27 @@
  */
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 {
-	binary_tree_t *array[1024];
+	binary_tree_t *tab[1024];
 	int i, insert;
 
 	if (!tree || !func)
 		return;
 	for (i = 0; i < 1024; i++)
-		array[i] = NULL;
+		tab[i] = NULL;
 	i = 0;
-	array[i] = (binary_tree_t *)tree;
+	tab[i] = (binary_tree_t *)tree;
 	insert = 1;
-	while (array[i])
+	while (tab[i])
 	{
-		func(array[i]->n);
-		if (array[i]->left)
+		func(tab[i]->n);
+		if (tab[i]->left)
 		{
-			array[insert] = array[i]->left;
+			tab[insert] = tab[i]->left;
 			insert++;
 		}
-		if (array[i]->right)
+		if (tab[i]->right)
 		{
-			array[insert] = array[i]->right;
+			tab[insert] = tab[i]->right;
 			insert++;
 		}
 		i++;

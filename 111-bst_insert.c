@@ -2,44 +2,44 @@
 
 /**
  * bst_insert - inserts a value in a Binary Search Tree
- * @tree: a double pointer to the root node of the BST to insert the value
+ * @tree: a double point to the racine node of the BST to insert the value
  * @value: the value to store in the node to be inserted
- * Return: a pointer to the created node
+ * Return: a point to the created node
  */
 bst_t *bst_insert(bst_t **tree, int value)
 {
-	bst_t *root, *last, **pointer;
+	bst_t *racine, *last, **point;
 
 	if (!tree)
 	{
-		root = binary_tree_node(NULL, value);
-		if (!root)
+		racine = binary_tree_node(NULL, value);
+		if (!racine)
 			return (NULL);
-		tree = &root;
-		return (root);
+		tree = &racine;
+		return (racine);
 	}
 	if (!(*tree))
 	{
 		*tree = binary_tree_node(NULL, value);
 		return (*tree);
 	}
-	root = *tree;
-	while (root)
+	racine = *tree;
+	while (racine)
 	{
-		if (value == root->n)
-			return (root);
-		last = root;
-		if (value < root->n)
+		if (value == racine->n)
+			return (racine);
+		last = racine;
+		if (value < racine->n)
 		{
-			pointer = &(root->left);
-			root = root->left;
+			point = &(racine->left);
+			racine = racine->left;
 		}
-		else if (value > root->n)
+		else if (value > racine->n)
 		{
-			pointer = &(root->right);
-			root = root->right;
+			point = &(racine->right);
+			racine = racine->right;
 		}
 	}
-	*pointer = binary_tree_node(last, value);
-	return (*pointer);
+	*point = binary_tree_node(last, value);
+	return (*point);
 }
